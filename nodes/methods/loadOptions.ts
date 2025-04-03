@@ -1,5 +1,6 @@
 import { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
 import { apiRequest } from '../apiRequest';
+import { openaiApiRequest } from '../OpenAI/openaiApiRequest';
 
 // To get all the workspaces
 export async function getWorkspaces(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
@@ -118,6 +119,23 @@ export async function getWhatsappTemplateByWorkspaceAndPhoneNumber(
 			name: template.name,
 			description: `Status:${template.status}`,
 			value: template._id,
+		});
+	}
+
+	return returnData;
+}
+
+// To get all whatsapp business api templates based on phone number
+export async function getOpenAIModels(
+	this: ILoadOptionsFunctions,
+): Promise<INodePropertyOptions[]> {
+	const returnData: INodePropertyOptions[] = [];
+	const { data } = await openaiApiRequest.call(this, 'GET', '/v1/models');
+
+	for (const model of data) {
+		returnData.push({
+			name: model.id,
+			value: model.id,
 		});
 	}
 

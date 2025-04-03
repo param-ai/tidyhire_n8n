@@ -10,7 +10,7 @@ export class TidyhireApi implements ICredentialType {
 
 	displayName = 'Tidyhire API';
 
-	icon: Icon =  'file:Tidyhire.svg'
+	icon: Icon =  'file:tidyhire.svg'
 
 	properties: INodeProperties[] = [
 		{

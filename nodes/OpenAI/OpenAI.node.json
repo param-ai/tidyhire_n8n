@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-base.openai",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Communication", "Recruiting"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://tidyhire.app/"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://tidyhire.app/"
+			}
+		]
+	}
+}

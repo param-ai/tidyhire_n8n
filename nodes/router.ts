@@ -1,6 +1,7 @@
 import { IExecuteFunctions, INodeExecutionData, NodeOperationError } from 'n8n-workflow';
 
 import * as whatsapp from './Whatsapp/operations';
+import * as openai from './OpenAI/operations';
 
 export async function router(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 	let returnData: INodeExecutionData[] = [];
@@ -17,6 +18,9 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 			case 'sendTemplate':
 			case 'sendSessionMessage':
 				returnData = await whatsapp[operation].execute.call(this);
+				break;
+			case 'extractStructuredData':
+				returnData = await openai[operation].execute.call(this);
 				break;
 			default:
 				throw new NodeOperationError(

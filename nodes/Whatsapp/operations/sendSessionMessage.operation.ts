@@ -33,9 +33,62 @@ const properties: INodeProperties[] = [
 	},
 	{
 		displayName: 'Text Message',
-		name: 'message',
+		name: 'body',
 		type: 'string',
 		default: '',
+		typeOptions: {
+			rows: 2,
+		},
+	},
+	{
+		displayName: 'Include Buttons?',
+		name: 'includeButtons',
+		type: 'boolean',
+		default: false,
+	},
+	{
+		displayName: 'Buttons',
+		name: 'buttons',
+		type: 'fixedCollection',
+		typeOptions: {
+			sortable: true,
+			multipleValues: true,
+		},
+		placeholder: 'Add Item',
+		default: { values: [] },
+		options: [
+			{
+				displayName: 'Values',
+				name: 'values',
+				values: [
+					{
+						displayName: 'Type',
+						name: 'type',
+						type: 'options',
+						description: 'Type of button.',
+						options: [
+							{
+								name: 'Quick Reply',
+								value: 'reply',
+							},
+						],
+						default: 'reply',
+					},
+					{
+						displayName: 'Text',
+						name: 'text',
+						type: 'string',
+						description: 'Provide the text',
+						default: '',
+					},
+				],
+			},
+		],
+		displayOptions: {
+			show: {
+				includeButtons: [true],
+			},
+		},
 	},
 ];
 
@@ -47,7 +100,6 @@ const displayOptions = {
 
 export const description = updateDisplayOptions(displayOptions, properties);
 
-
 export async function execute(this: IExecuteFunctions): Promise<INodeExecutionData[]> {
 	const returnData: INodeExecutionData[] = [];
 
@@ -56,21 +108,26 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 		const candidate_id = this.getNodeParameter('candidate', 0, '');
 		const candidate_phone = this.getNodeParameter('candidatePhoneNumber', 0, '');
 
-		const message = this.getNodeParameter('message', 0, '');
+		const body = this.getNodeParameter('body', 0, '');
 
-		const body: IDataObject = {
+		const buttons = this.getNodeParameter('buttons.values', 0, []) as IDataObject[];
+
+		const payload: IDataObject = {
 			reply_to: '',
 			candidate_id: candidate_id,
 			candidate_phone_number: candidate_phone,
 			project_id: project_id,
-			content: message,
+			content: {
+				body: body,
+				buttons: buttons,
+			},
 		};
 
 		const responseData = await apiRequest.call(
 			this,
 			'POST',
 			'/api/communication/whatsapp-business-api/send-message',
-			body,
+			payload,
 		);
 
 		const executionData = this.helpers.constructExecutionMetaData(
