@@ -19,6 +19,7 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 			case 'sendSessionMessage':
 				returnData = await whatsapp[operation].execute.call(this);
 				break;
+			case 'askChatgpt':
 			case 'extractStructuredData':
 				returnData = await openai[operation].execute.call(this);
 				break;
