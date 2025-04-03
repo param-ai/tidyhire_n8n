@@ -1,11 +1,17 @@
-import { IDataObject, IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
-import { updateDisplayOptions } from 'n8n-workflow';
+import {
+	IDataObject,
+	IExecuteFunctions,
+	INodeExecutionData,
+	INodeProperties,
+	updateDisplayOptions,
+} from 'n8n-workflow';
 import {
 	candidatePhoneProperties,
 	candidateProperties,
 	projectProperties,
+	whatsappBusinessAccountProperties,
 } from '../../common.descriptions';
-import { whatsappNumberProperties } from '../descriptions';
+
 import { apiRequest } from '../../apiRequest';
 
 /* -------------------------------------------------------------------------- */
@@ -13,7 +19,7 @@ import { apiRequest } from '../../apiRequest';
 /* -------------------------------------------------------------------------- */
 
 const properties: INodeProperties[] = [
-	...whatsappNumberProperties,
+	...whatsappBusinessAccountProperties,
 	...projectProperties,
 	...candidateProperties,
 	...candidatePhoneProperties,
@@ -30,36 +36,28 @@ const properties: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Dynamic Template Fields',
-		name: 'dynamicTemplateFields',
-		placeholder: 'Add Dynamic Template Fields',
-		type: 'fixedCollection',
-		typeOptions: {
-			multipleValues: true,
+		displayName: 'Template Variables',
+		name: 'templateVariables',
+		type: 'resourceMapper',
+		default: {
+			mappingMode: 'defineBelow',
+			value: null,
 		},
-		default: {},
-		options: [
-			{
-				displayName: 'Fields',
-				name: 'fields',
-				values: [
-					{
-						displayName: 'Key',
-						name: 'key',
-						type: 'string',
-						default: '',
-						description: 'Key of the dynamic template field',
-					},
-					{
-						displayName: 'Value',
-						name: 'value',
-						type: 'string',
-						default: '',
-						description: 'Value for the field',
-					},
-				],
+		noDataExpression: true,
+		required: true,
+		typeOptions: {
+			loadOptionsDependsOn: ['templateId'],
+			resourceMapper: {
+				resourceMapperMethod: 'getVariablesByWhatsappTemplate',
+				mode: 'add',
+				fieldWords: {
+					singular: 'variable',
+					plural: 'variables',
+				},
+				addAllFields: true,
+				multiKeyMatch: true,
 			},
-		],
+		},
 	},
 ];
 
@@ -71,6 +69,37 @@ const displayOptions = {
 
 export const description = updateDisplayOptions(displayOptions, properties);
 
+function transformMapper(input: IDataObject): IDataObject {
+	let output: IDataObject = {
+		header:[],
+		body:[]
+	};
+
+	for (let key in input) {
+		let match = key.match(/(header|body)-{{(\d+)}}/);
+		if (match) {
+			let type = match[1]; // 'header' or 'body'
+			let index = parseInt(match[2], 10) - 1; // Convert to zero-based index
+			let value = input[key];
+
+			// Ensure the key exists and is an array
+			if (!Array.isArray(output[type])) {
+				output[type] = [];
+			}
+
+			(output[type] as any[])[index] = value;
+		}
+	}
+
+	// Replace undefined slots with null
+	for (let key in output) {
+		output[key] = (output[key] as any[]).map((val) => (val !== undefined ? val : null));
+	}
+
+	return output;
+}
+
+
 export async function execute(this: IExecuteFunctions): Promise<INodeExecutionData[]> {
 	const returnData: INodeExecutionData[] = [];
 
@@ -81,12 +110,25 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 
 		const template_id = this.getNodeParameter('templateId', 0, '');
 
+		const dataMode = this.getNodeParameter('templateVariables.mappingMode', 0) as string;
+
 		const body: IDataObject = {
 			template_id: template_id,
 			candidate_id: candidate_id,
 			candidate_phone_number: candidate_phone,
 			project_id: project_id,
 		};
+
+		if (dataMode === 'defineBelow') {
+			const template_variables = this.getNodeParameter(
+				'templateVariables.value',
+				0,
+				[],
+			) as IDataObject;
+			body.template_variables = transformMapper(template_variables);
+		}
+
+		console.log(body);
 
 		const responseData = await apiRequest.call(
 			this,

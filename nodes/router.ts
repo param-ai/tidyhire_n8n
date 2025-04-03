@@ -1,6 +1,6 @@
 import { IExecuteFunctions, INodeExecutionData, NodeOperationError } from 'n8n-workflow';
 
-import * as whatsapp from './Whatsapp/Whatsapp.resource';
+import * as whatsapp from './Whatsapp/operations';
 
 export async function router(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 	let returnData: INodeExecutionData[] = [];
@@ -15,6 +15,7 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 	try {
 		switch (operation) {
 			case 'sendTemplate':
+			case 'sendSessionMessage':
 				returnData = await whatsapp[operation].execute.call(this);
 				break;
 			default:

@@ -1,9 +1,9 @@
 import {
 	IDataObject,
 	IExecuteFunctions,
+	IHookFunctions,
 	IHttpRequestMethods,
 	ILoadOptionsFunctions,
-	IPollFunctions,
 	IRequestOptions,
 } from 'n8n-workflow';
 
@@ -12,7 +12,7 @@ import {
  *
  */
 export async function apiRequest(
-	this: IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions,
+	this: IExecuteFunctions | ILoadOptionsFunctions | IHookFunctions,
 	method: IHttpRequestMethods,
 	endpoint: string,
 	body: IDataObject = {},

@@ -1,12 +1,15 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-export const commonProperties: INodeProperties[] = [
+export const authProperties: INodeProperties[] = [
 	{
 		displayName: 'Authentication',
 		name: 'authentication',
 		type: 'hidden',
 		default: 'tidyhireApi',
 	},
+];
+
+export const workspaceProperties: INodeProperties[] = [
 	{
 		displayName: 'Workspace Name or ID',
 		name: 'workspace',
@@ -19,7 +22,6 @@ export const commonProperties: INodeProperties[] = [
 	},
 ];
 
-
 export const projectProperties: INodeProperties[] = [
 	{
 		displayName: 'Project Name or ID',
@@ -29,6 +31,21 @@ export const projectProperties: INodeProperties[] = [
 		default: '',
 		typeOptions: {
 			loadOptionsMethod: 'getProjects',
+			loadOptionsDependsOn: ['workspace'],
+		},
+		noDataExpression:true
+	},
+];
+
+export const whatsappBusinessAccountProperties: INodeProperties[] = [
+	{
+		displayName: 'Whatsapp Account',
+		name: 'whatsappBusinessAccount',
+		type: 'options',
+		default: '',
+		typeOptions: {
+			loadOptionsMethod: 'getWhatsappBusinessAccount',
+			loadOptionsDependsOn: ['workspace'],
 		},
 	},
 ];
@@ -47,6 +64,22 @@ export const candidateProperties: INodeProperties[] = [
 		},
 	},
 ];
+
+export const candidateEmailProperties: INodeProperties[] = [
+	{
+		displayName: 'Candidate Email',
+		name: 'candidatePhoneNumber',
+		type: 'options',
+		description: 'Recipient’s phone number in international format. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
+		default: '',
+		typeOptions: {
+			loadOptionsMethod: 'getCandidatesPhoneNumbers',
+			loadOptionsDependsOn: ['candidate'],
+		},
+		required: true,
+	},
+];
+
 
 export const candidatePhoneProperties: INodeProperties[] = [
 	{
