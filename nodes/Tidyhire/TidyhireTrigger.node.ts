@@ -9,16 +9,16 @@ import { NodeConnectionType } from 'n8n-workflow';
 import { authProperties, projectProperties, workspaceProperties } from '../common.descriptions';
 import { loadOptions, resourceMapping, webhookMethods } from '../methods';
 
-export class WhatsappTrigger implements INodeType {
+export class TidyhireTrigger implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Whatsapp Trigger',
-		name: 'whatsappTrigger',
-		icon: 'file:whatsapp.svg',
+		displayName: 'Tidyhire Trigger',
+		name: 'tidyhireTrigger',
+		icon: 'file:tidyhire.svg',
 		group: ['trigger'],
 		version: 1,
-		description: 'Handle Whatsapp events via webhooks',
+		description: 'Handle Tidyhire events via webhooks',
 		defaults: {
-			name: 'Whatsapp Trigger',
+			name: 'Tidyhire Trigger',
 		},
 		inputs: [],
 		outputs: [NodeConnectionType.Main],
@@ -50,13 +50,13 @@ export class WhatsappTrigger implements INodeType {
 				options: [
 					{
 						name: '*',
-						value: '*',
+						value: 'tidyhire.*',
 						description: 'Any time any event is triggered (Wildcard Event)',
 					},
 					{
-						name: 'Message Replied',
-						value: 'whatsapp.message.replied',
-						description: 'Occurs whenever a candidate replied to any message',
+						name: 'Project Created',
+						value: 'tidyhire.project.created',
+						description: 'Occurs whenever a user created a project',
 					},
 				],
 			},

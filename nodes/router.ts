@@ -6,12 +6,7 @@ import * as openai from './OpenAI/operations';
 export async function router(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 	let returnData: INodeExecutionData[] = [];
 
-	const items = this.getInputData();
-
 	const operation = this.getNodeParameter('operation', 0);
-
-	console.log(operation);
-	console.log(items);
 
 	try {
 		switch (operation) {
@@ -20,6 +15,7 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 				returnData = await whatsapp[operation].execute.call(this);
 				break;
 			case 'askChatgpt':
+			case 'askAssistant':
 			case 'extractStructuredData':
 				returnData = await openai[operation].execute.call(this);
 				break;

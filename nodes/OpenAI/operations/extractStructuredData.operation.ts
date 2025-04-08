@@ -78,7 +78,7 @@ const properties: INodeProperties[] = [
 						options: [
 							{
 								name: 'Text',
-								value: 'text',
+								value: 'string',
 							},
 							{
 								name: 'Number',
@@ -89,7 +89,7 @@ const properties: INodeProperties[] = [
 								value: 'boolean',
 							},
 						],
-						default: 'text',
+						default: 'string',
 					},
 					{
 						displayName: 'Fail if Not present?',

@@ -141,3 +141,32 @@ export async function getOpenAIModels(
 
 	return returnData;
 }
+
+export async function getOpenAIAssistants(
+	this: ILoadOptionsFunctions,
+): Promise<INodePropertyOptions[]> {
+	const returnData: INodePropertyOptions[] = [];
+	const { data } = await openaiApiRequest.call(
+		this,
+		'GET',
+		'/v1/assistants',
+		undefined,
+		undefined,
+		undefined,
+		{
+			headers: {
+				'OpenAI-Beta': 'assistants=v2',
+			},
+		},
+	);
+
+	for (const model of data) {
+		returnData.push({
+			name: model?.name || 'Untitled assistant',
+			value: model.id,
+			description: 'Id: ' + model.id,
+		});
+	}
+
+	return returnData;
+}

@@ -13,9 +13,12 @@ export class OpenAI implements INodeType {
 		displayName: 'OpenAI',
 		description: 'Consume the openai API',
 		name: 'openai',
-		icon: 'file:openai.svg',
+		icon: {
+			light: 'file:openai-dark.svg',
+			dark: 'file:openai-light.svg',
+		},
 		group: ['transform'],
-		subtitle: '={{$parameter["operation"] + ": " + $parameter["resources"]}}',
+		subtitle: '={{"OpenAI: " + $parameter["operation"]}}',
 		version: 1,
 		defaults: {
 			name: 'OpenAI',

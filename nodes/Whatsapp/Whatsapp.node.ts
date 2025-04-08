@@ -16,7 +16,7 @@ export class Whatsapp implements INodeType {
 		name: 'whatsapp',
 		icon: 'file:whatsapp.svg',
 		group: ['transform'],
-		subtitle: '={{$parameter["operation"] + ": " + $parameter["resources"]}}',
+		subtitle: '={{"Whatsapp: " + $parameter["operation"]}}',
 		version: 1,
 		defaults: {
 			name: 'Whatsapp',

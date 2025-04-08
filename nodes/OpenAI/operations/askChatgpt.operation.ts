@@ -9,7 +9,7 @@ import {
 import { openaiApiRequest } from '../openaiApiRequest';
 
 /* -------------------------------------------------------------------------- */
-/*                                openai:extractStructuredData                             */
+/*                                openai:askChatgpt                             */
 /* -------------------------------------------------------------------------- */
 
 const properties: INodeProperties[] = [
