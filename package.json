@@ -31,7 +31,7 @@
     "n8nNodesApiVersion": 1,
     "credentials": [
       "dist/credentials/tidyhireApi.credentials.js",
-      "dist/credentials/openaiApi.credentials.js"
+      "dist/credentials/OpenaiApi.credentials.js"
     ],
     "nodes": [
       "dist/nodes/Whatsapp/Whatsapp.node.js",

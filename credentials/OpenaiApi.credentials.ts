@@ -5,7 +5,7 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class OpenAIApi implements ICredentialType {
+export class OpenaiApi implements ICredentialType {
 	name = 'openAIApi';
 
 	displayName = 'Open AI API';
