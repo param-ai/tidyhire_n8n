@@ -1,8 +1,22 @@
-node_modules
+# Ignore node_modules in root and any subfolder
+node_modules/
+**/node_modules/
+
+# Mac system file
 .DS_Store
+.idea
+
+# Temp folders
 .tmp
 tmp
+
+# Build output
 dist
+**/dist/
+
+# NPM and Yarn logs
 npm-debug.log*
 yarn.lock
-.vscode/launch.json
+
+# VS Code debug config
+custom-nodes/.vscode/launch.json

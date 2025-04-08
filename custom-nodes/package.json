@@ -17,15 +17,15 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "tsc && gulp build:icons",
-    "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "build": "../node_modules/.bin/tsc && gulp build:icons",
+    "dev": "../node_modules/.bin/tsc --watch",
+    "format": "../node_modules/.bin/prettier custom-nodes/nodes custom-nodes/credentials --write",
+    "lint": "../node_modules/.bin/eslint custom-nodes/nodes custom-nodes/credentials package.json",
+    "lintfix": "../node_modules/.bin/eslint custom-nodes/nodes custom-nodes/credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js custom-nodes/nodes custom-nodes/credentials package.json"
   },
   "files": [
-    "dist"
+    "../dist"
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
