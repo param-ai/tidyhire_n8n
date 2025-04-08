@@ -30,10 +30,12 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/tidyhireApi.credentials.js"
+      "dist/credentials/tidyhireApi.credentials.js",
+      "dist/credentials/openaiApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Whatsapp/Whatsapp.node.js"
+      "dist/nodes/Whatsapp/Whatsapp.node.js",
+      "dist/nodes/OpenAI/OpenAI.node.js"
     ]
   },
   "devDependencies": {
