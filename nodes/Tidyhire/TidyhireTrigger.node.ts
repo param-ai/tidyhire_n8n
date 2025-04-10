@@ -6,7 +6,7 @@ import type {
 } from 'n8n-workflow';
 import { NodeConnectionType } from 'n8n-workflow';
 
-import { authProperties, projectProperties, workspaceProperties } from '../common.descriptions';
+import { authProperties, projectProperties } from '../common.descriptions';
 import { loadOptions, resourceMapping, webhookMethods } from '../methods';
 
 export class TidyhireTrigger implements INodeType {
@@ -38,7 +38,6 @@ export class TidyhireTrigger implements INodeType {
 		],
 		properties: [
 			...authProperties,
-			...workspaceProperties,
 			...projectProperties,
 			{
 				displayName: 'Events',

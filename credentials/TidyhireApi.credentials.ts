@@ -14,8 +14,8 @@ export class TidyhireApi implements ICredentialType {
 
 	properties: INodeProperties[] = [
 		{
-			displayName: 'Access Token',
-			name: 'accessToken',
+			displayName: 'API Key',
+			name: 'apiKey',
 			type: 'string',
 			typeOptions: { password: true },
 			default: '',
@@ -26,7 +26,7 @@ export class TidyhireApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				Authorization: '=Bearer {{$credentials.accessToken}}',
+				Authorization: '=Api-Key {{$credentials.apiKey}}',
 			},
 		},
 	};
@@ -34,7 +34,7 @@ export class TidyhireApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: 'http://localhost:3000',
-			url: '/test-access-token',
+			url: '/test-api-key',
 			json: true,
 			ignoreHttpStatusErrors: true,
 		},
@@ -44,7 +44,7 @@ export class TidyhireApi implements ICredentialType {
 				properties: {
 					key: 'success',
 					value: false,
-					message: 'Invalid Access Token',
+					message: 'Invalid API Key, Contact Tidyhire Support.',
 				},
 			},
 		],

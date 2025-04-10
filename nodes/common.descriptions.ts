@@ -9,18 +9,18 @@ export const authProperties: INodeProperties[] = [
 	},
 ];
 
-export const workspaceProperties: INodeProperties[] = [
-	{
-		displayName: 'Workspace Name or ID',
-		name: 'workspace',
-		type: 'options',
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
-		default: '',
-		typeOptions: {
-			loadOptionsMethod: 'getWorkspaces',
-		},
-	},
-];
+// export const workspaceProperties: INodeProperties[] = [
+// 	{
+// 		displayName: 'Workspace Name or ID',
+// 		name: 'workspace',
+// 		type: 'options',
+// 		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+// 		default: '',
+// 		typeOptions: {
+// 			loadOptionsMethod: 'getWorkspaces',
+// 		},
+// 	},
+// ];
 
 export const projectProperties: INodeProperties[] = [
 	{
@@ -31,7 +31,6 @@ export const projectProperties: INodeProperties[] = [
 		default: '',
 		typeOptions: {
 			loadOptionsMethod: 'getProjects',
-			loadOptionsDependsOn: ['workspace'],
 		},
 		noDataExpression:true
 	},

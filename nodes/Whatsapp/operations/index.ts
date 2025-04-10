@@ -1,7 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 // All common prop
-import { workspaceProperties } from '../../common.descriptions';
 
 // All Operations
 import * as sendTemplate from './sendTemplate.operation';
@@ -31,7 +30,6 @@ export const description: INodeProperties[] = [
 		],
 		default: 'sendTemplate',
 	},
-	...workspaceProperties,
 	...sendTemplate.description,
 	...sendSessionMessage.description,
 ];

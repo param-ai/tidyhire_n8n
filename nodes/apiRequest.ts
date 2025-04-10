@@ -7,6 +7,7 @@ import {
 	IRequestOptions,
 } from 'n8n-workflow';
 
+export const TIDYHIRE_BASE_API_URL = 'http://localhost:3000';
 /**
  * Make an API request to Tidyhire
  *
@@ -22,18 +23,12 @@ export async function apiRequest(
 ) {
 	query = query || {};
 
-	const workspace = this.getNodeParameter('workspace', 0) as string;
-
-	if (!query?.workspace && workspace) {
-		query.workspace = workspace;
-	}
-
 	const options: IRequestOptions = {
 		headers: {},
 		method,
 		body,
 		qs: query,
-		uri: uri || `http://localhost:3000${endpoint}`,
+		uri: uri || `${BASE_URL}${endpoint}`,
 		useQuerystring: false,
 		json: true,
 	};

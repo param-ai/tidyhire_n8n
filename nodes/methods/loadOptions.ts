@@ -41,7 +41,7 @@ export async function getCandidates(this: ILoadOptionsFunctions): Promise<INodeP
 	const { data } = await apiRequest.call(
 		this,
 		'POST',
-		`/api/project/${project}/pipeline/candidates`,
+		`/api/project/${project}/pipeline/candidates?no_limit=true`,
 	);
 
 	for (const candidate of data?.candidates) {
