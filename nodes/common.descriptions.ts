@@ -27,12 +27,13 @@ export const projectProperties: INodeProperties[] = [
 		displayName: 'Project Name or ID',
 		name: 'project',
 		type: 'options',
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+		description:
+			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 		default: '',
 		typeOptions: {
 			loadOptionsMethod: 'getProjects',
 		},
-		noDataExpression:true
+		noDataExpression: true,
 	},
 ];
 
@@ -44,18 +45,17 @@ export const whatsappBusinessAccountProperties: INodeProperties[] = [
 		default: '',
 		typeOptions: {
 			loadOptionsMethod: 'getWhatsappBusinessAccount',
-			loadOptionsDependsOn: ['workspace'],
 		},
 	},
 ];
-
 
 export const candidateProperties: INodeProperties[] = [
 	{
 		displayName: 'Candidate Name or ID',
 		name: 'candidate',
 		type: 'options',
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+		description:
+			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 		default: '',
 		typeOptions: {
 			loadOptionsMethod: 'getCandidates',
@@ -69,7 +69,8 @@ export const candidateEmailProperties: INodeProperties[] = [
 		displayName: 'Candidate Email',
 		name: 'candidatePhoneNumber',
 		type: 'options',
-		description: 'Recipient’s phone number in international format. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
+		description:
+			'Recipient’s phone number in international format. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
 		default: '',
 		typeOptions: {
 			loadOptionsMethod: 'getCandidatesPhoneNumbers',
@@ -78,14 +79,14 @@ export const candidateEmailProperties: INodeProperties[] = [
 		required: true,
 	},
 ];
-
 
 export const candidatePhoneProperties: INodeProperties[] = [
 	{
 		displayName: 'Candidate Phone Number Name or ID',
 		name: 'candidatePhoneNumber',
 		type: 'options',
-		description: 'Recipient’s phone number in international format. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
+		description:
+			'Recipient’s phone number in international format. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
 		default: '',
 		typeOptions: {
 			loadOptionsMethod: 'getCandidatesPhoneNumbers',
@@ -94,10 +95,3 @@ export const candidatePhoneProperties: INodeProperties[] = [
 		required: true,
 	},
 ];
-
-
-
-
-
-
-
