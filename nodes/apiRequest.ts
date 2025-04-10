@@ -7,7 +7,8 @@ import {
 	IRequestOptions,
 } from 'n8n-workflow';
 
-export const TIDYHIRE_BASE_API_URL = 'http://localhost:3000';
+export const TIDYHIRE_BASE_API_URL = 'https://api-staging.tidyhire.app';
+// export const TIDYHIRE_BASE_API_URL = 'http://localhost:3000';
 /**
  * Make an API request to Tidyhire
  *
@@ -28,7 +29,7 @@ export async function apiRequest(
 		method,
 		body,
 		qs: query,
-		uri: uri || `${BASE_URL}${endpoint}`,
+		uri: uri || `${TIDYHIRE_BASE_API_URL}${endpoint}`,
 		useQuerystring: false,
 		json: true,
 	};

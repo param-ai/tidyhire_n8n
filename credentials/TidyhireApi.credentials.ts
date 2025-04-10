@@ -4,6 +4,7 @@ import type {
 	ICredentialType,
 	INodeProperties,
 } from 'n8n-workflow';
+import { TIDYHIRE_BASE_API_URL } from '../nodes/apiRequest';
 
 export class TidyhireApi implements ICredentialType {
 	name = 'tidyhireApi';
@@ -33,7 +34,7 @@ export class TidyhireApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'http://localhost:3000',
+			baseURL: TIDYHIRE_BASE_API_URL,
 			url: '/test-api-key',
 			json: true,
 			ignoreHttpStatusErrors: true,
