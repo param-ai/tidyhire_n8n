@@ -127,9 +127,17 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 	const returnData: INodeExecutionData[] = [];
 
 	try {
-		const project_id = this.getNodeParameter('project', 0, '');
-		const candidate_id = this.getNodeParameter('candidate', 0, '');
-		const candidate_phone = this.getNodeParameter('candidatePhoneNumber', 0, '');
+		const project_id = this.getNodeParameter('project', 0, undefined, {
+			extractValue: true,
+		}) as string;
+
+		const candidate_id = this.getNodeParameter('candidate', 0, undefined, {
+			extractValue: true,
+		}) as string;
+
+		const candidate_phone = this.getNodeParameter('candidatePhoneNumber', 0, undefined, {
+			extractValue: true,
+		}) as string;
 
 		const body = this.getNodeParameter('body', 0, '');
 

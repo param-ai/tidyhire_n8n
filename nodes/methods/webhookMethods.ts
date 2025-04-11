@@ -42,7 +42,9 @@ export const webhookMethods = {
 
 		const events = this.getNodeParameter('events', []);
 
-		const project = this.getNodeParameter('project', null);
+		const project = this.getNodeParameter('project', undefined, {
+			extractValue: true,
+		}) as string;
 
 		const body = {
 			url: webhookUrl,
@@ -73,7 +75,12 @@ export const webhookMethods = {
 			const body = {};
 
 			try {
-				await apiRequest.call(this, 'POST', '/api/workflow/webhook/delete/' + webhookData.webhookId, body);
+				await apiRequest.call(
+					this,
+					'POST',
+					'/api/workflow/webhook/delete/' + webhookData.webhookId,
+					body,
+				);
 			} catch (error) {
 				return false;
 			}
