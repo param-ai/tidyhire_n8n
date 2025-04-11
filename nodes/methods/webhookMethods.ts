@@ -18,7 +18,7 @@ export const webhookMethods = {
 		}
 
 		try {
-			await apiRequest.call(this, 'GET', '/api/webhook/get/' + webhookData.webhookId);
+			await apiRequest.call(this, 'GET', '/api/workflow/webhook/get/' + webhookData.webhookId);
 		} catch (error) {
 			if (error.httpCode === '404') {
 				// Webhook does not exist
@@ -51,7 +51,7 @@ export const webhookMethods = {
 			project: project,
 		};
 
-		const { data } = await apiRequest.call(this, 'POST', '/api/webhook/create', body);
+		const { data } = await apiRequest.call(this, 'POST', '/api/workflow/webhook/create', body);
 
 		if (!data) {
 			// Required data is missing so was not successful
@@ -73,7 +73,7 @@ export const webhookMethods = {
 			const body = {};
 
 			try {
-				await apiRequest.call(this, 'POST', '/api/webhook/delete/' + webhookData.webhookId, body);
+				await apiRequest.call(this, 'POST', '/api/workflow/webhook/delete/' + webhookData.webhookId, body);
 			} catch (error) {
 				return false;
 			}
