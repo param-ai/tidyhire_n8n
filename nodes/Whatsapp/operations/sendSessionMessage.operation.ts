@@ -6,7 +6,6 @@ import {
 	updateDisplayOptions,
 } from 'n8n-workflow';
 import {
-	candidatePhoneProperties,
 	candidateProperties,
 	projectProperties,
 	whatsappBusinessAccountProperties,
@@ -22,15 +21,39 @@ const properties: INodeProperties[] = [
 	...whatsappBusinessAccountProperties,
 	...projectProperties,
 	...candidateProperties,
-	...candidatePhoneProperties,
 	{
-		displayName: 'Reply To',
-		name: 'replyMessageId',
-		type: 'string',
-		default: '',
-		hint: 'It should be expression mode',
-		noDataExpression: false,
+		displayName: "Candidate's Phone Number",
+		name: 'candidatePhoneNumber',
+		type: 'resourceLocator',
+		default: { mode: 'list', value: '' },
+		required: true,
+		description:
+			'Recipient’s phone number in international format. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
+		modes: [
+			{
+				displayName: 'From List',
+				name: 'list',
+				type: 'list',
+				typeOptions: {
+					searchListMethod: 'getCandidatesPhoneNumbers',
+					searchable: false,
+				},
+			},
+			{
+				displayName: 'By Number',
+				name: 'number',
+				type: 'string',
+			},
+		],
 	},
+	// {
+	// 	displayName: 'Reply To',
+	// 	name: 'replyMessageId',
+	// 	type: 'string',
+	// 	default: '',
+	// 	hint: 'It should be expression mode',
+	// 	noDataExpression: false,
+	// },
 	{
 		displayName: 'Text Message',
 		name: 'body',

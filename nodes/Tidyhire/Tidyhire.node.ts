@@ -6,7 +6,7 @@ import {
 } from 'n8n-workflow';
 import * as tidyhire from './operations';
 import { authProperties } from '../common.descriptions';
-import { loadOptions, resourceMapping } from '../methods';
+import { loadOptions,listSearch, resourceMapping } from '../methods';
 import { router } from '../router';
 
 export class Tidyhire implements INodeType {
@@ -34,6 +34,7 @@ export class Tidyhire implements INodeType {
 	};
 	methods = {
 		loadOptions,
+		listSearch,
 		resourceMapping,
 	};
 

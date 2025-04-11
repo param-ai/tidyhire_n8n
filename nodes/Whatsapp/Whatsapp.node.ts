@@ -6,7 +6,7 @@ import {
 } from 'n8n-workflow';
 import * as whatsapp from './operations';
 import { authProperties } from '../common.descriptions';
-import { loadOptions, resourceMapping } from '../methods';
+import { loadOptions, listSearch, resourceMapping } from '../methods';
 import { router } from '../router';
 
 export class Whatsapp implements INodeType {
@@ -34,6 +34,7 @@ export class Whatsapp implements INodeType {
 	};
 	methods = {
 		loadOptions,
+		listSearch,
 		resourceMapping,
 	};
 

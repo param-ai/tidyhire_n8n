@@ -6,7 +6,6 @@ import {
 	updateDisplayOptions,
 } from 'n8n-workflow';
 import {
-	candidatePhoneProperties,
 	candidateProperties,
 	projectProperties,
 	whatsappBusinessAccountProperties,
@@ -22,18 +21,53 @@ const properties: INodeProperties[] = [
 	...whatsappBusinessAccountProperties,
 	...projectProperties,
 	...candidateProperties,
-	...candidatePhoneProperties,
 	{
-		displayName: 'Template Name or ID',
-		name: 'templateId',
-		type: 'options',
-		default: '',
+		displayName: "Candidate's Phone Number",
+		name: 'candidatePhoneNumber',
+		type: 'resourceLocator',
+		default: { mode: 'list', value: '' },
+		required: true,
 		description:
-			'The Template you want to send. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
-		typeOptions: {
-			loadOptionsMethod: 'getWhatsappTemplateByWorkspaceAndPhoneNumber',
-			loadOptionsDependsOn: ['whatsappBusinessAccount'],
-		},
+			'Recipient’s phone number in international format. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
+		modes: [
+			{
+				displayName: 'From List',
+				name: 'list',
+				type: 'list',
+				typeOptions: {
+					searchListMethod: 'getCandidatesPhoneNumbers',
+					searchable: false,
+				},
+			},
+			{
+				displayName: 'By Number',
+				name: 'number',
+				type: 'string',
+			},
+		],
+	},
+	{
+		displayName: 'Template Name',
+		name: 'templateName',
+		type: 'resourceLocator',
+		default: { mode: 'list', value: '' },
+		required: true,
+		modes: [
+			{
+				displayName: 'From List',
+				name: 'list',
+				type: 'list',
+				typeOptions: {
+					searchListMethod: 'getWhatsappTemplateByPhoneNumber',
+					searchable: false,
+				},
+			},
+			{
+				displayName: 'By Name',
+				name: 'name',
+				type: 'string',
+			},
+		],
 	},
 	{
 		displayName: 'Template Variables',
@@ -43,10 +77,9 @@ const properties: INodeProperties[] = [
 			mappingMode: 'defineBelow',
 			value: null,
 		},
-		noDataExpression: true,
 		required: true,
 		typeOptions: {
-			loadOptionsDependsOn: ['templateId'],
+			loadOptionsDependsOn: ['templateName.value', 'templateName'],
 			resourceMapper: {
 				resourceMapperMethod: 'getVariablesByWhatsappTemplate',
 				mode: 'add',
@@ -71,8 +104,8 @@ export const description = updateDisplayOptions(displayOptions, properties);
 
 function transformMapper(input: IDataObject): IDataObject {
 	let output: IDataObject = {
-		header:[],
-		body:[]
+		header: [],
+		body: [],
 	};
 
 	for (let key in input) {
@@ -99,21 +132,30 @@ function transformMapper(input: IDataObject): IDataObject {
 	return output;
 }
 
-
 export async function execute(this: IExecuteFunctions): Promise<INodeExecutionData[]> {
 	const returnData: INodeExecutionData[] = [];
 
 	try {
-		const project_id = this.getNodeParameter('project', 0, '');
-		const candidate_id = this.getNodeParameter('candidate', 0, '');
-		const candidate_phone = this.getNodeParameter('candidatePhoneNumber', 0, '');
+		const project_id = this.getNodeParameter('project', 0, undefined, {
+			extractValue: true,
+		}) as string;
 
-		const template_id = this.getNodeParameter('templateId', 0, '');
+		const candidate_id = this.getNodeParameter('candidate', 0, undefined, {
+			extractValue: true,
+		}) as string;
+
+		const candidate_phone = this.getNodeParameter('candidatePhoneNumber', 0, undefined, {
+			extractValue: true,
+		}) as string;
+
+		const template_name = this.getNodeParameter('templateName', 0, undefined, {
+			extractValue: true,
+		}) as string;
 
 		const dataMode = this.getNodeParameter('templateVariables.mappingMode', 0) as string;
 
 		const body: IDataObject = {
-			template_id: template_id,
+			template_name: template_name,
 			candidate_id: candidate_id,
 			candidate_phone_number: candidate_phone,
 			project_id: project_id,
@@ -127,8 +169,6 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 			) as IDataObject;
 			body.template_variables = transformMapper(template_variables);
 		}
-
-		console.log(body);
 
 		const responseData = await apiRequest.call(
 			this,

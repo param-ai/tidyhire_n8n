@@ -3,6 +3,7 @@ import {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
+	NodeOperationError,
 	updateDisplayOptions,
 } from 'n8n-workflow';
 import { projectProperties } from '../../common.descriptions';
@@ -55,7 +56,10 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 	const returnData: INodeExecutionData[] = [];
 
 	try {
-		const project_id = this.getNodeParameter('project', 0, '');
+		const project_id = this.getNodeParameter('project', 0, '', {
+			extractValue: true,
+		});
+
 		const stages = this.getNodeParameter('stages', 0) as string[];
 
 		const payload: IDataObject = {
@@ -71,11 +75,17 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 			payload,
 		);
 
-		const executionData = this.helpers.constructExecutionMetaData(
-			this.helpers.returnJsonArray(responseData),
-			{ itemData: { item: 0 } },
-		);
-		returnData.push(...executionData);
+		if (responseData?.success) {
+			const items = [];
+			if (responseData.success && Array.isArray(responseData.data?.candidates)) {
+				for (const candidate of responseData.data?.candidates) {
+					items.push({ json: candidate });
+				}
+			}
+			returnData.push(...items);
+		} else {
+			throw new NodeOperationError(this.getNode(), responseData?.message);
+		}
 	} catch (error) {
 		if (this.continueOnFail()) {
 			returnData.push({ json: { message: error.message, error } });

@@ -9,9 +9,13 @@ import { apiRequest } from '../apiRequest';
 export async function getVariablesByWhatsappTemplate(
 	this: ILoadOptionsFunctions,
 ): Promise<ResourceMapperFields> {
-	const templateId = this.getNodeParameter('templateId', undefined, {
+	const templateName = this.getNodeParameter('templateName', undefined, {
 		extractValue: true,
 	}) as string;
+
+	if (!templateName) {
+		throw new Error('Please select a template first');
+	}
 
 	const { data } = await apiRequest.call(
 		this,
@@ -19,7 +23,7 @@ export async function getVariablesByWhatsappTemplate(
 		`/api/communication/whatsapp-business-api/get-template`,
 		undefined,
 		{
-			template_id: templateId,
+			template_name: templateName,
 		},
 	);
 
@@ -30,7 +34,6 @@ export async function getVariablesByWhatsappTemplate(
 	}
 
 	const fields: ResourceMapperField[] = [];
-
 
 	for (let i = 0; i < data.variables.header.length; i++) {
 		fields.push({
