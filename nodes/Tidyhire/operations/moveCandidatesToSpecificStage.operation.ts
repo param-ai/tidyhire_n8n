@@ -5,7 +5,7 @@ import {
 	INodeProperties,
 	updateDisplayOptions,
 } from 'n8n-workflow';
-import { candidateProperties, projectProperties } from '../../common.descriptions';
+import { projectProperties } from '../../common.descriptions';
 
 import { apiRequest } from '../../apiRequest';
 
@@ -15,7 +15,30 @@ import { apiRequest } from '../../apiRequest';
 
 const properties: INodeProperties[] = [
 	...projectProperties,
-	...candidateProperties,
+	{
+		displayName: 'Candidate',
+		name: 'candidate',
+		type: 'resourceLocator',
+		default: { mode: 'list', value: '' },
+		required: true,
+		// description: 'The Airtable Base in which to operate on',
+		modes: [
+			{
+				displayName: 'From List',
+				name: 'list',
+				type: 'list',
+				typeOptions: {
+					searchListMethod: 'getCandidates',
+					searchable: false,
+				},
+			},
+			{
+				displayName: 'ID',
+				name: 'id',
+				type: 'string',
+			},
+		],
+	},
 	{
 		displayName: 'Stage',
 		name: 'stage',
@@ -55,9 +78,12 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 	const returnData: INodeExecutionData[] = [];
 
 	try {
-		const project_id = this.getNodeParameter('project', 0, '');
-		const candidate = this.getNodeParameter('candidate', 0, '');
-
+		const project_id = this.getNodeParameter('project', 0, undefined, {
+			extractValue: true,
+		});
+		const candidate = this.getNodeParameter('candidate', 0, undefined, {
+			extractValue: true,
+		});
 		const stage = this.getNodeParameter('stage', 0) as string;
 
 		const payload: IDataObject = {
