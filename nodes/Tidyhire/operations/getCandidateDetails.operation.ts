@@ -39,7 +39,7 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 		if (responseData?.success) {
 			const items = [];
 			if (responseData.success) {
-				items.push({ json: responseData.data?.data });
+				items.push({ json: responseData?.data });
 			}
 			returnData.push(...items);
 		} else {

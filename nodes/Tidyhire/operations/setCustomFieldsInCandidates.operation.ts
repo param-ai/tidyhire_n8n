@@ -2,6 +2,7 @@ import {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
+	NodeOperationError,
 	updateDisplayOptions,
 } from 'n8n-workflow';
 import { projectProperties } from '../../common.descriptions';
@@ -109,11 +110,15 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 			payload,
 		);
 
-		const executionData = this.helpers.constructExecutionMetaData(
-			this.helpers.returnJsonArray(responseData),
-			{ itemData: { item: 0 } },
-		);
-		returnData.push(...executionData);
+		if (responseData?.success) {
+			const items = [];
+			if (responseData.success) {
+				items.push({ json: responseData?.data?.custom_fields });
+			}
+			returnData.push(...items);
+		} else {
+			throw new NodeOperationError(this.getNode(), responseData?.message);
+		}
 	} catch (error) {
 		if (this.continueOnFail()) {
 			returnData.push({ json: { message: error.message, error } });
