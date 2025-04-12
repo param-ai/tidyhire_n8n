@@ -3,8 +3,9 @@ import type { INodeProperties } from 'n8n-workflow';
 // All Operations
 import * as getCandidatesByStage from './getCandidatesByStage.operation';
 import * as moveCandidatesToSpecificStage from './moveCandidatesToSpecificStage.operation';
+import * as setCustomFieldsInCandidates from './setCustomFieldsInCandidates.operation';
 
-export { getCandidatesByStage, moveCandidatesToSpecificStage };
+export { getCandidatesByStage, moveCandidatesToSpecificStage, setCustomFieldsInCandidates };
 
 export const description: INodeProperties[] = [
 	{
@@ -23,9 +24,15 @@ export const description: INodeProperties[] = [
 				value: 'moveCandidatesToSpecificStage',
 				action: 'Move candidates to Specific Stage',
 			},
+			{
+				name: 'Set custom fields in candidates',
+				value: 'setCustomFieldsInCandidates',
+				action: 'Set custom fields in candidates',
+			},
 		],
 		default: 'getCandidatesByStage',
 	},
 	...getCandidatesByStage.description,
 	...moveCandidatesToSpecificStage.description,
+	...setCustomFieldsInCandidates.description,
 ];

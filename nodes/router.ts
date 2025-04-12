@@ -17,6 +17,7 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 				break;
 			case 'getCandidatesByStage':
 			case 'moveCandidatesToSpecificStage':
+			case 'setCustomFieldsInCandidates':
 				returnData = await tidyhire[operation].execute.call(this);
 				break;
 			case 'askChatgpt':
