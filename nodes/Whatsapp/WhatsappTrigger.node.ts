@@ -7,7 +7,7 @@ import type {
 import { NodeConnectionType } from 'n8n-workflow';
 
 import { authProperties, projectProperties } from '../common.descriptions';
-import { loadOptions, resourceMapping, webhookMethods } from '../methods';
+import { listSearch, loadOptions, resourceMapping, webhookMethods } from '../methods';
 
 export class WhatsappTrigger implements INodeType {
 	description: INodeTypeDescription = {
@@ -53,6 +53,11 @@ export class WhatsappTrigger implements INodeType {
 						description: 'Any time any event is triggered (Wildcard Event)',
 					},
 					{
+						name: 'Message Status updated',
+						value: 'whatsapp.message.status.updated',
+						description: 'Occurs whenever a message status is updated',
+					},
+					{
 						name: 'Message Replied',
 						value: 'whatsapp.message.replied',
 						description: 'Occurs whenever a candidate replied to any message',
@@ -64,6 +69,7 @@ export class WhatsappTrigger implements INodeType {
 
 	methods = {
 		loadOptions,
+		listSearch,
 		resourceMapping,
 	};
 
