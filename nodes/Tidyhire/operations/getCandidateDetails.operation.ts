@@ -14,7 +14,8 @@ import { apiRequest } from '../../apiRequest';
 /* -------------------------------------------------------------------------- */
 
 const properties: INodeProperties[] = [
-	{ ...projectProperties, ...candidateProperties[0], required: true },
+	...projectProperties,
+	{ ...candidateProperties[0], required: true },
 ];
 
 const displayOptions = {
@@ -33,7 +34,7 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 			extractValue: true,
 		});
 
-		const responseData = await apiRequest.call(this, 'GET', `/api/candidate/${candidate}`);
+		const responseData = await apiRequest.call(this, 'GET', `/api/candidate/get/${candidate}`);
 
 		if (responseData?.success) {
 			const items = [];
