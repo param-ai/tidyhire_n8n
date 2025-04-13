@@ -5,46 +5,24 @@ import {
 	INodeProperties,
 	updateDisplayOptions,
 } from 'n8n-workflow';
-import {
-	candidateProperties,
-	projectProperties,
-	whatsappBusinessAccountProperties,
-} from '../../common.descriptions';
+import { whatsappBusinessAccountProperties } from '../../common.descriptions';
 
 import { apiRequest } from '../../apiRequest';
 
 /* -------------------------------------------------------------------------- */
-/*                                whatsapp:sendTemplate                             */
+/*                                whatsapp:sendAlert                             */
 /* -------------------------------------------------------------------------- */
 
 const properties: INodeProperties[] = [
 	...whatsappBusinessAccountProperties,
-	...projectProperties,
-	...candidateProperties,
 	{
-		displayName: "Candidate's Phone Number",
+		displayName: 'Phone Number',
 		name: 'candidatePhoneNumber',
-		type: 'resourceLocator',
-		default: { mode: 'list', value: '' },
+		type: 'string',
+		default: '',
 		required: true,
 		description:
 			'Recipient’s phone number in international format. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
-		modes: [
-			{
-				displayName: 'From List',
-				name: 'list',
-				type: 'list',
-				typeOptions: {
-					searchListMethod: 'getCandidatesPhoneNumbers',
-					searchable: false,
-				},
-			},
-			{
-				displayName: 'By Number',
-				name: 'number',
-				type: 'string',
-			},
-		],
 	},
 	{
 		displayName: 'Template Name',
@@ -96,7 +74,7 @@ const properties: INodeProperties[] = [
 
 const displayOptions = {
 	show: {
-		operation: ['sendTemplate'],
+		operation: ['sendAlert'],
 	},
 };
 
@@ -136,14 +114,6 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 	const returnData: INodeExecutionData[] = [];
 
 	try {
-		const project_id = this.getNodeParameter('project', 0, undefined, {
-			extractValue: true,
-		}) as string;
-
-		const candidate_id = this.getNodeParameter('candidate', 0, undefined, {
-			extractValue: true,
-		}) as string;
-
 		const candidate_phone = this.getNodeParameter('candidatePhoneNumber', 0, undefined, {
 			extractValue: true,
 		}) as string;
@@ -156,9 +126,7 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 
 		const body: IDataObject = {
 			template_name: template_name,
-			candidate_id: candidate_id,
 			candidate_phone_number: candidate_phone,
-			project_id: project_id,
 		};
 
 		if (dataMode === 'defineBelow') {
@@ -173,7 +141,7 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 		const responseData = await apiRequest.call(
 			this,
 			'POST',
-			'/api/communication/whatsapp-business-api/send-template',
+			'/api/communication/whatsapp-business-api/send-alert',
 			body,
 		);
 

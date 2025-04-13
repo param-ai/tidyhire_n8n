@@ -13,6 +13,7 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 		switch (operation) {
 			case 'sendTemplate':
 			case 'sendSessionMessage':
+			case 'sendAlert':
 				returnData = await whatsapp[operation].execute.call(this);
 				break;
 			case 'getCandidatesByStage':

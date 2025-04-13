@@ -5,8 +5,9 @@ import type { INodeProperties } from 'n8n-workflow';
 // All Operations
 import * as sendTemplate from './sendTemplate.operation';
 import * as sendSessionMessage from './sendSessionMessage.operation';
+import * as sendAlert from './sendAlert.operation';
 
-export { sendTemplate, sendSessionMessage };
+export { sendTemplate, sendSessionMessage, sendAlert };
 
 export const description: INodeProperties[] = [
 	{
@@ -26,6 +27,12 @@ export const description: INodeProperties[] = [
 				value: 'sendSessionMessage',
 				description: 'Send follow-up Message once session starts',
 				action: 'Send a session message',
+			},
+			{
+				name: 'Send Alert Message',
+				value: 'sendAlert',
+				description: 'Send alert message (without tracking by tidyhire)',
+				action: 'Send a alert message',
 			},
 		],
 		default: 'sendTemplate',
