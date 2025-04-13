@@ -87,7 +87,7 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 		const stage = this.getNodeParameter('stage', 0) as string;
 
 		const payload: IDataObject = {
-			candidates: [candidate],
+			candidates: [{ _id: candidate }],
 			stage: stage,
 		};
 
