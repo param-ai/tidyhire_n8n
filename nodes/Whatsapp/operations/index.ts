@@ -39,4 +39,5 @@ export const description: INodeProperties[] = [
 	},
 	...sendTemplate.description,
 	...sendSessionMessage.description,
+	...sendAlert.description,
 ];
