@@ -92,6 +92,22 @@ const properties: INodeProperties[] = [
 			},
 		},
 	},
+	{
+		displayName: 'Options',
+		name: 'options',
+		type: 'collection',
+		placeholder: 'Add option',
+		default: {},
+		options: [
+			{
+				displayName: 'Disable Tidyhire Tracking',
+				name: 'disableTidyhireTracking',
+				type: 'boolean',
+				default: false,
+				description: 'This will disable tracking in tidyhire, also will not saved in tidyhire db.',
+			},
+		],
+	},
 ];
 
 const displayOptions = {
@@ -154,11 +170,21 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 
 		const dataMode = this.getNodeParameter('templateVariables.mappingMode', 0) as string;
 
+		const disable_tidyhire_tracking = this.getNodeParameter(
+			'disableTidyhireTracking',
+			0,
+			undefined,
+			{
+				extractValue: true,
+			},
+		) as string;
+
 		const body: IDataObject = {
 			template_name: template_name,
 			candidate_id: candidate_id,
 			candidate_phone_number: candidate_phone,
 			project_id: project_id,
+			disable_tidyhire_tracking,
 		};
 
 		if (dataMode === 'defineBelow') {

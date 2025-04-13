@@ -1,1 +1,1 @@
-cd n8n-docker-caddy && docker-compose down && cd custom-nodes && git pull && rm dist -r && npm run build && cd .. && docker-compose up -d
+cd n8n-docker-caddy && docker-compose down && cd custom-nodes && git pull && rm dist -r && npm run build && cd .. && docker-compose up -d && cd ..
