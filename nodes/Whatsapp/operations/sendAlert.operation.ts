@@ -84,10 +84,11 @@ function transformMapper(input: IDataObject): IDataObject {
 	let output: IDataObject = {
 		header: [],
 		body: [],
+		button:[]
 	};
 
 	for (let key in input) {
-		let match = key.match(/(header|body)-{{(\d+)}}/);
+		let match = key.match(/(header|body|button)-{{(\d+)}}/);
 		if (match) {
 			let type = match[1]; // 'header' or 'body'
 			let index = parseInt(match[2], 10) - 1; // Convert to zero-based index
