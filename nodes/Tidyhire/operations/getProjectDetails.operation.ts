@@ -14,7 +14,6 @@ import { apiRequest } from '../../apiRequest';
 /* -------------------------------------------------------------------------- */
 
 const properties: INodeProperties[] = [
-	...projectProperties,
 	{ ...projectProperties[0], required: true },
 ];
 
