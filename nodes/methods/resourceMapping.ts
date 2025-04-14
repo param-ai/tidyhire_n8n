@@ -47,10 +47,24 @@ export async function getVariablesByWhatsappTemplate(
 		});
 	}
 
+
 	for (let i = 0; i < data.variables.body.length; i++) {
 		fields.push({
 			id: `body-{{${i + 1}\}}`,
 			displayName: `body {{${i + 1}\}}`,
+			required: false,
+			defaultMatch: false,
+			canBeUsedToMatch: true,
+			display: true,
+			type: 'string',
+		});
+	}
+
+
+	for (let i = 0; i < data.variables.button.length; i++) {
+		fields.push({
+			id: `button-{{${i + 1}\}}`,
+			displayName: `button {{${i + 1}\}}`,
 			required: false,
 			defaultMatch: false,
 			canBeUsedToMatch: true,
