@@ -16,6 +16,7 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 			case 'sendAlert':
 				returnData = await whatsapp[operation].execute.call(this);
 				break;
+			case 'getProjectDetails':
 			case 'getCandidatesByStage':
 			case 'moveCandidatesToSpecificStage':
 			case 'setCustomFieldsInCandidates':
