@@ -168,6 +168,15 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 				[],
 			) as IDataObject;
 			body.template_variables = transformMapper(template_variables);
+			console.log(body.template_variables);
+		} else {
+			const items = this.getInputData();
+			const item = items[0]; // or loop over all items
+			const inputData = item.json;
+
+
+			body.template_variables = inputData;
+			console.log(body.template_variables);
 		}
 
 		const responseData = await apiRequest.call(

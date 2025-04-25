@@ -1,17 +1,21 @@
 import type {
-	IAuthenticateGeneric, Icon,
+	IAuthenticateGeneric,
+	Icon,
 	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
 } from 'n8n-workflow';
-import { TIDYHIRE_BASE_API_URL } from '../nodes/apiRequest';
+import {
+	TIDYHIRE_BASE_API_PRODUCTION_URL,
+	TIDYHIRE_BASE_API_STAGING_URL,
+} from '../nodes/apiRequest';
 
 export class TidyhireApi implements ICredentialType {
 	name = 'tidyhireApi';
 
 	displayName = 'Tidyhire API';
 
-	icon: Icon =  'file:tidyhire.svg'
+	icon: Icon = 'file:tidyhire.svg';
 
 	properties: INodeProperties[] = [
 		{
@@ -19,6 +23,23 @@ export class TidyhireApi implements ICredentialType {
 			name: 'apiKey',
 			type: 'string',
 			default: '',
+		},
+		{
+			displayName: 'Environment',
+			name: 'environment',
+			type: 'options',
+			options: [
+				{
+					name: 'Production',
+					value: 'production',
+				},
+				{
+					name: 'Staging',
+					value: 'staging',
+				},
+			],
+			default: 'production',
+			description: 'Choose the environment for the api',
 		},
 	];
 
@@ -33,7 +54,12 @@ export class TidyhireApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: TIDYHIRE_BASE_API_URL,
+			baseURL:
+				'={{ $credentials.environment === "production" ? "' +
+				TIDYHIRE_BASE_API_PRODUCTION_URL +
+				'" : "' +
+				TIDYHIRE_BASE_API_STAGING_URL +
+				'" }}',
 			url: '/test-api-key',
 			json: true,
 			ignoreHttpStatusErrors: true,

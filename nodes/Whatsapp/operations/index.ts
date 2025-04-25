@@ -6,8 +6,9 @@ import type { INodeProperties } from 'n8n-workflow';
 import * as sendTemplate from './sendTemplate.operation';
 import * as sendSessionMessage from './sendSessionMessage.operation';
 import * as sendAlert from './sendAlert.operation';
+import * as getTemplate from './getTemplate.operation';
 
-export { sendTemplate, sendSessionMessage, sendAlert };
+export { sendTemplate, sendSessionMessage, sendAlert, getTemplate };
 
 export const description: INodeProperties[] = [
 	{
@@ -34,10 +35,16 @@ export const description: INodeProperties[] = [
 				description: 'Send alert message (without tracking by tidyhire)',
 				action: 'Send a alert message',
 			},
+			{
+				name: 'Get Whatsapp Template',
+				value: 'getTemplate',
+				action: 'Get template',
+			},
 		],
 		default: 'sendTemplate',
 	},
 	...sendTemplate.description,
 	...sendSessionMessage.description,
 	...sendAlert.description,
+	...getTemplate.description,
 ];

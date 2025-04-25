@@ -1,1 +1,6 @@
+# Prod
+
 cd n8n-docker-caddy && docker-compose down && cd custom-nodes && git pull && rm dist -r && npm run build && cd .. && docker-compose up -d && cd ..
+
+# Staging
+nvm use 18 && pnpm run build && pnpm link && npx n8n
