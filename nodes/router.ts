@@ -11,6 +11,7 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 
 	try {
 		switch (operation) {
+			case 'getTemplates':
 			case 'getTemplate':
 			case 'sendTemplate':
 			case 'sendSessionMessage':

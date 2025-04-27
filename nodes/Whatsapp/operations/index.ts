@@ -7,8 +7,9 @@ import * as sendTemplate from './sendTemplate.operation';
 import * as sendSessionMessage from './sendSessionMessage.operation';
 import * as sendAlert from './sendAlert.operation';
 import * as getTemplate from './getTemplate.operation';
+import * as getTemplates from './getTemplates.operation';
 
-export { sendTemplate, sendSessionMessage, sendAlert, getTemplate };
+export { sendTemplate, sendSessionMessage, sendAlert, getTemplate, getTemplates };
 
 export const description: INodeProperties[] = [
 	{
@@ -36,7 +37,12 @@ export const description: INodeProperties[] = [
 				action: 'Send a alert message',
 			},
 			{
-				name: 'Get Whatsapp Template',
+				name: 'List templates',
+				value: 'getTemplates',
+				action: 'List templates',
+			},
+			{
+				name: 'Fetch Whatsapp Template',
 				value: 'getTemplate',
 				action: 'Get template',
 			},
@@ -47,4 +53,5 @@ export const description: INodeProperties[] = [
 	...sendSessionMessage.description,
 	...sendAlert.description,
 	...getTemplate.description,
+	...getTemplates.description,
 ];
