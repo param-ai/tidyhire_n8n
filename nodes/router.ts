@@ -3,6 +3,7 @@ import { IExecuteFunctions, INodeExecutionData, NodeOperationError } from 'n8n-w
 import * as whatsapp from './Whatsapp/operations';
 import * as tidyhire from './Tidyhire/operations';
 import * as openai from './OpenAI/operations';
+import * as AICall from './AICall/operations';
 
 export async function router(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 	let returnData: INodeExecutionData[] = [];
@@ -17,6 +18,9 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 			case 'sendSessionMessage':
 			case 'sendAlert':
 				returnData = await whatsapp[operation].execute.call(this);
+				break;
+			case 'startCall':
+				returnData = await AICall[operation].execute.call(this);
 				break;
 			case 'getProjectDetails':
 			case 'getCandidatesByStage':

@@ -1,0 +1,401 @@
+{
+	"gender": ["Male", "Female"],
+	"language": [
+		{ "language": "Afrikaans", "code": "af", "supported_provider": ["groq"] },
+		{ "language": "Arabic", "code": "ar", "supported_provider": ["groq"] },
+		{ "language": "Armenian", "code": "hy", "supported_provider": ["groq"] },
+		{ "language": "Azerbaijani", "code": "az", "supported_provider": ["groq"] },
+		{ "language": "Belarusian", "code": "be", "supported_provider": ["groq"] },
+		{ "language": "Bosnian", "code": "bs", "supported_provider": ["groq"] },
+		{
+			"language": "Bulgarian",
+			"code": "bg",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Catalan",
+			"code": "ca",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Chinese",
+			"code": "zh",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Croatian", "code": "hr", "supported_provider": ["groq"] },
+		{
+			"language": "Czech",
+			"code": "cs",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Danish",
+			"code": "da",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Dutch",
+			"code": "nl",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "English",
+			"code": "en",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Estonian",
+			"code": "et",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Finnish",
+			"code": "fi",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "French",
+			"code": "fr",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Galician", "code": "gl", "supported_provider": ["groq"] },
+		{
+			"language": "German",
+			"code": "de",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Greek",
+			"code": "el",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Hebrew", "code": "he", "supported_provider": ["groq"] },
+		{
+			"language": "Hindi",
+			"code": "hi",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Hungarian",
+			"code": "hu",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Icelandic", "code": "is", "supported_provider": ["groq"] },
+		{
+			"language": "Indonesian",
+			"code": "id",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Italian",
+			"code": "it",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Japanese",
+			"code": "ja",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Kannada", "code": "kn", "supported_provider": ["groq"] },
+		{ "language": "Kazakh", "code": "kk", "supported_provider": ["groq"] },
+		{
+			"language": "Korean",
+			"code": "ko",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Latvian",
+			"code": "lv",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Lithuanian",
+			"code": "lt",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Macedonian", "code": "mk", "supported_provider": ["groq"] },
+		{
+			"language": "Malay",
+			"code": "ms",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Marathi", "code": "mr", "supported_provider": ["groq"] },
+		{ "language": "Maori", "code": "mi", "supported_provider": ["groq"] },
+		{ "language": "Nepali", "code": "ne", "supported_provider": ["groq"] },
+		{
+			"language": "Norwegian",
+			"code": "no",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Persian", "code": "fa", "supported_provider": ["groq"] },
+		{
+			"language": "Polish",
+			"code": "pl",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Portuguese",
+			"code": "pt",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Romanian",
+			"code": "ro",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Russian",
+			"code": "ru",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Serbian", "code": "sr", "supported_provider": ["groq"] },
+		{
+			"language": "Slovak",
+			"code": "sk",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Slovenian", "code": "sl", "supported_provider": ["groq"] },
+		{
+			"language": "Spanish",
+			"code": "es",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Swahili", "code": "sw", "supported_provider": ["groq"] },
+		{
+			"language": "Swedish",
+			"code": "sv",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Tagalog", "code": "tl", "supported_provider": ["groq"] },
+		{ "language": "Tamil", "code": "ta", "supported_provider": ["groq"] },
+		{
+			"language": "Thai",
+			"code": "th",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Turkish",
+			"code": "tr",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Ukrainian",
+			"code": "uk",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Urdu", "code": "ur", "supported_provider": ["groq"] },
+		{
+			"language": "Vietnamese",
+			"code": "vi",
+			"supported_provider": ["deepgram", "groq"]
+		},
+		{ "language": "Welsh", "code": "cy", "supported_provider": ["groq"] }
+	],
+	"llmModel": [
+		{ "label": "gpt-4.1", "value": "gpt-4.1", "provider": "openai" },
+		{ "label": "gpt-4.1-mini", "value": "gpt-4.1-mini", "provider": "openai" },
+		{ "label": "gpt-4.1-nano", "value": "gpt-4.1-nano", "provider": "openai" },
+		{ "label": "gpt-4o", "value": "gpt-4o", "provider": "openai" },
+		{
+			"label": "gpt-4o-2024-05-13",
+			"value": "gpt-4o-2024-05-13",
+			"provider": "openai"
+		},
+		{ "label": "gpt-4o-mini", "value": "gpt-4o-mini", "provider": "openai" },
+		{
+			"label": "gpt-4o-mini-2024-07-18",
+			"value": "gpt-4o-mini-2024-07-18",
+			"provider": "openai"
+		},
+		{ "label": "gpt-4-turbo", "value": "gpt-4-turbo", "provider": "openai" },
+		{
+			"label": "gpt-4-turbo-2024-04-09",
+			"value": "gpt-4-turbo-2024-04-09",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-4-turbo-preview",
+			"value": "gpt-4-turbo-preview",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-4-0125-preview",
+			"value": "gpt-4-0125-preview",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-4-1106-preview",
+			"value": "gpt-4-1106-preview",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-4-vision-preview",
+			"value": "gpt-4-vision-preview",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-4-1106-vision-preview",
+			"value": "gpt-4-1106-vision-preview",
+			"provider": "openai"
+		},
+		{ "label": "gpt-4", "value": "gpt-4", "provider": "openai" },
+		{ "label": "gpt-4-0314", "value": "gpt-4-0314", "provider": "openai" },
+		{ "label": "gpt-4-0613", "value": "gpt-4-0613", "provider": "openai" },
+		{ "label": "gpt-4-32k", "value": "gpt-4-32k", "provider": "openai" },
+		{
+			"label": "gpt-4-32k-0314",
+			"value": "gpt-4-32k-0314",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-4-32k-0613",
+			"value": "gpt-4-32k-0613",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-3.5-turbo",
+			"value": "gpt-3.5-turbo",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-3.5-turbo-16k",
+			"value": "gpt-3.5-turbo-16k",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-3.5-turbo-0301",
+			"value": "gpt-3.5-turbo-0301",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-3.5-turbo-0613",
+			"value": "gpt-3.5-turbo-0613",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-3.5-turbo-1106",
+			"value": "gpt-3.5-turbo-1106",
+			"provider": "openai"
+		},
+		{
+			"label": "gpt-3.5-turbo-16k-0613",
+			"value": "gpt-3.5-turbo-16k-0613",
+			"provider": "openai"
+		},
+		{
+			"label": "llama-3.1-405b-reasoning",
+			"value": "llama-3.1-405b-reasoning",
+			"provider": "groq"
+		},
+		{
+			"label": "llama-3.1-8b-instant",
+			"value": "llama-3.1-8b-instant",
+			"provider": "groq"
+		},
+		{
+			"label": "llama-3.3-70b-versatile",
+			"value": "llama-3.3-70b-versatile",
+			"provider": "groq"
+		},
+		{
+			"label": "llama3-groq-70b-8192-tool-use-preview",
+			"value": "llama3-groq-70b-8192-tool-use-preview",
+			"provider": "groq"
+		},
+		{
+			"label": "llama3-groq-8b-8192-tool-use-preview",
+			"value": "llama3-groq-8b-8192-tool-use-preview",
+			"provider": "groq"
+		},
+		{
+			"label": "llama-guard-3-8b",
+			"value": "llama-guard-3-8b",
+			"provider": "groq"
+		},
+		{
+			"label": "llama3-70b-8192",
+			"value": "llama3-70b-8192",
+			"provider": "groq"
+		},
+		{
+			"label": "llama3-8b-8192",
+			"value": "llama3-8b-8192",
+			"provider": "groq"
+		},
+		{
+			"label": "mixtral-8x7b-32768",
+			"value": "mixtral-8x7b-32768",
+			"provider": "groq"
+		},
+		{ "label": "gemma-7b-it", "value": "gemma-7b-it", "provider": "groq" },
+		{ "label": "gemma2-9b-it", "value": "gemma2-9b-it", "provider": "groq" },
+		{
+			"label": "llama-3.3-70b-specdec",
+			"value": "llama-3.3-70b-specdec",
+			"provider": "groq"
+		},
+		{
+			"label": "meta-llama/llama-4-scout-17b-16e-instruct",
+			"value": "meta-llama/llama-4-scout-17b-16e-instruct",
+			"provider": "groq"
+		}
+	],
+	"effect": ["Coffee", "Office", "Typing", "None"],
+	"voiceSpeed": [
+		{ "id": -1.0, "label": "-1.0" },
+		{ "id": -0.9, "label": "-0.9" },
+		{ "id": -0.8, "label": "-0.8" },
+		{ "id": -0.7, "label": "-0.7" },
+		{ "id": -0.6, "label": "-0.6" },
+		{ "id": -0.5, "label": "-0.5" },
+		{ "id": -0.4, "label": "-0.4" },
+		{ "id": -0.3, "label": "-0.3" },
+		{ "id": -0.2, "label": "-0.2" },
+		{ "id": -0.1, "label": "-0.1" },
+		{ "id": 0.0, "label": "0.0" },
+		{ "id": 0.1, "label": "0.1" },
+		{ "id": 0.2, "label": "0.2" },
+		{ "id": 0.3, "label": "0.3" },
+		{ "id": 0.4, "label": "0.4" },
+		{ "id": 0.5, "label": "0.5" },
+		{ "id": 0.6, "label": "0.6" },
+		{ "id": 0.7, "label": "0.7" },
+		{ "id": 0.8, "label": "0.8" },
+		{ "id": 0.9, "label": "0.9" },
+		{ "id": 1.0, "label": "1.0" }
+	],
+	"effectVolume": [
+		{ "id": 0.1, "label": "0.1" },
+		{ "id": 0.2, "label": "0.2" },
+		{ "id": 0.3, "label": "0.3" },
+		{ "id": 0.4, "label": "0.4" },
+		{ "id": 0.5, "label": "0.5" },
+		{ "id": 0.6, "label": "0.6" },
+		{ "id": 0.7, "label": "0.7" },
+		{ "id": 0.8, "label": "0.8" },
+		{ "id": 0.9, "label": "0.9" },
+		{ "id": 1.0, "label": "1.0" }
+	],
+	"llmTemperature": [
+		{ "id": 0.1, "label": "0.1" },
+		{ "id": 0.2, "label": "0.2" },
+		{ "id": 0.3, "label": "0.3" },
+		{ "id": 0.4, "label": "0.4" },
+		{ "id": 0.5, "label": "0.5" },
+		{ "id": 0.6, "label": "0.6" },
+		{ "id": 0.7, "label": "0.7" },
+		{ "id": 0.8, "label": "0.8" },
+		{ "id": 0.9, "label": "0.9" },
+		{ "id": 1.0, "label": "1.0" },
+		{ "id": 1.1, "label": "1.1" },
+		{ "id": 1.2, "label": "1.2" },
+		{ "id": 1.3, "label": "1.3" },
+		{ "id": 1.4, "label": "1.4" },
+		{ "id": 1.5, "label": "1.5" },
+		{ "id": 1.6, "label": "1.6" },
+		{ "id": 1.7, "label": "1.7" },
+		{ "id": 1.8, "label": "1.8" },
+		{ "id": 1.9, "label": "1.9" },
+		{ "id": 2.0, "label": "2.0" }
+	]
+}

@@ -1,6 +1,7 @@
 import { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
 import { apiRequest } from '../apiRequest';
 import { openaiApiRequest } from '../OpenAI/openaiApiRequest';
+import settingsOptions from '../AICall/settingsOptions.json';
 
 // To get all the workspaces
 export async function getWorkspaces(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
@@ -167,6 +168,38 @@ export async function getOpenAIAssistants(
 			description: 'Id: ' + model.id,
 		});
 	}
+
+	return returnData;
+}
+
+// To get all whatsapp business api templates based on phone number
+export async function getLanguageProviders(
+	this: ILoadOptionsFunctions,
+): Promise<INodePropertyOptions[]> {
+	const returnData: INodePropertyOptions[] = [];
+
+	const language = this.getNodeParameter('assistantSettings.language', 0, {
+		extractValue: true,
+	});
+
+	if (!language) {
+		return [];
+	}
+
+	const languageEntry = settingsOptions.language.find((lang) => lang.code === language);
+
+
+	if (!languageEntry) {
+		return [];
+	}
+
+	for (const each of languageEntry.supported_provider) {
+		returnData.push({
+			name: each,
+			value: each,
+		});
+	}
+	console.log(returnData);
 
 	return returnData;
 }
