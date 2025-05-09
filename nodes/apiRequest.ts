@@ -7,8 +7,8 @@ import {
 	IRequestOptions,
 } from 'n8n-workflow';
 
-export const TIDYHIRE_BASE_API_PRODUCTION_URL = 'https://api.tidyhire.app';
-export const TIDYHIRE_BASE_API_STAGING_URL = 'https://api-staging.tidyhire.app';
+export const TIDYHIRE_BASE_API_PRODUCTION_URL = 'http://localhost:3000';
+export const TIDYHIRE_BASE_API_STAGING_URL = 'http://localhost:3000';
 // export const TIDYHIRE_BASE_API_URL = 'https://api-staging.tidyhire.app';
 // export const TIDYHIRE_BASE_API_URL = 'http://localhost:3000';
 /**

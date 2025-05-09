@@ -188,7 +188,6 @@ export async function getLanguageProviders(
 
 	const languageEntry = settingsOptions.language.find((lang) => lang.code === language);
 
-
 	if (!languageEntry) {
 		return [];
 	}
@@ -200,6 +199,40 @@ export async function getLanguageProviders(
 		});
 	}
 	console.log(returnData);
+
+	return returnData;
+}
+
+export async function getVoices(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+	const language = this.getNodeParameter('assistantSettings.language', 0, {
+		extractValue: true,
+	});
+
+	const gender = this.getNodeParameter('assistantSettings.gender', 0, {
+		extractValue: true,
+	});
+
+	const returnData: INodePropertyOptions[] = [];
+	const { data } = await apiRequest.call(
+		this,
+		'GET',
+		'/api/communication/ai-call/voices',
+		undefined,
+		{
+			gender: gender,
+			language: language,
+		},
+	);
+
+	for (const each of data) {
+		for (const eachVoice of each.voices) {
+			returnData.push({
+				name: eachVoice.name,
+				description: each.provider,
+				value: eachVoice.id,
+			});
+		}
+	}
 
 	return returnData;
 }
