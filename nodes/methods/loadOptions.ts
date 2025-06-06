@@ -198,7 +198,6 @@ export async function getLanguageProviders(
 			value: each,
 		});
 	}
-	console.log(returnData);
 
 	return returnData;
 }
@@ -229,7 +228,7 @@ export async function getVoices(this: ILoadOptionsFunctions): Promise<INodePrope
 			returnData.push({
 				name: eachVoice.name,
 				description: each.provider,
-				value: eachVoice.id,
+				value: JSON.stringify(eachVoice),
 			});
 		}
 	}

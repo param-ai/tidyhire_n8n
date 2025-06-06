@@ -5,6 +5,7 @@
 		{ "language": "Arabic", "code": "ar", "supported_provider": ["groq"] },
 		{ "language": "Armenian", "code": "hy", "supported_provider": ["groq"] },
 		{ "language": "Azerbaijani", "code": "az", "supported_provider": ["groq"] },
+		{ "language": "Bengali", "code": "bn", "supported_provider": ["sarvam"] },
 		{ "language": "Belarusian", "code": "be", "supported_provider": ["groq"] },
 		{ "language": "Bosnian", "code": "bs", "supported_provider": ["groq"] },
 		{
@@ -41,7 +42,7 @@
 		{
 			"language": "English",
 			"code": "en",
-			"supported_provider": ["deepgram", "groq"]
+			"supported_provider": ["deepgram", "groq","sarvam"]
 		},
 		{
 			"language": "Estonian",
@@ -69,11 +70,16 @@
 			"code": "el",
 			"supported_provider": ["deepgram", "groq"]
 		},
+		{
+			"language": "Gujarati",
+			"code": "gu",
+			"supported_provider": ["sarvam"]
+		},
 		{ "language": "Hebrew", "code": "he", "supported_provider": ["groq"] },
 		{
 			"language": "Hindi",
 			"code": "hi",
-			"supported_provider": ["deepgram", "groq"]
+			"supported_provider": ["deepgram", "groq","sarvam"]
 		},
 		{
 			"language": "Hungarian",
@@ -96,7 +102,7 @@
 			"code": "ja",
 			"supported_provider": ["deepgram", "groq"]
 		},
-		{ "language": "Kannada", "code": "kn", "supported_provider": ["groq"] },
+		{ "language": "Kannada", "code": "kn", "supported_provider": ["groq","sarvam"] },
 		{ "language": "Kazakh", "code": "kk", "supported_provider": ["groq"] },
 		{
 			"language": "Korean",
@@ -119,13 +125,23 @@
 			"code": "ms",
 			"supported_provider": ["deepgram", "groq"]
 		},
-		{ "language": "Marathi", "code": "mr", "supported_provider": ["groq"] },
+		{
+			"language": "Malayalam",
+			"code": "ml",
+			"supported_provider": ["sarvam"]
+		},
+		{ "language": "Marathi", "code": "mr", "supported_provider": ["groq","sarvam"] },
 		{ "language": "Maori", "code": "mi", "supported_provider": ["groq"] },
 		{ "language": "Nepali", "code": "ne", "supported_provider": ["groq"] },
 		{
 			"language": "Norwegian",
 			"code": "no",
 			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Odia",
+			"code": "od",
+			"supported_provider": ["sarvam"]
 		},
 		{ "language": "Persian", "code": "fa", "supported_provider": ["groq"] },
 		{
@@ -137,6 +153,11 @@
 			"language": "Portuguese",
 			"code": "pt",
 			"supported_provider": ["deepgram", "groq"]
+		},
+		{
+			"language": "Punjabi",
+			"code": "pa",
+			"supported_provider": ["sarvam"]
 		},
 		{
 			"language": "Romanian",
@@ -167,7 +188,12 @@
 			"supported_provider": ["deepgram", "groq"]
 		},
 		{ "language": "Tagalog", "code": "tl", "supported_provider": ["groq"] },
-		{ "language": "Tamil", "code": "ta", "supported_provider": ["groq"] },
+		{ "language": "Tamil", "code": "ta", "supported_provider": ["groq","sarvam"] },
+		{
+			"language": "Telugu",
+			"code": "te",
+			"supported_provider": ["sarvam"]
+		},
 		{
 			"language": "Thai",
 			"code": "th",
