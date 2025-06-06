@@ -8,6 +8,8 @@ import {
 } from 'n8n-workflow';
 
 export const TIDYHIRE_BASE_API_PRODUCTION_URL = 'https://api.tidyhire.app';
+export const TIDYHIRE_BASE_API_STAGING_URL = 'https://api-staging.tidyhire.app';
+
 // 'http://localhost:3000';
 // 'https://api-staging.tidyhire.app';
 
