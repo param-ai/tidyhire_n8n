@@ -1,6 +1,9 @@
-# Prod
+# Testing locally
+nvm use 18 && pnpm run build && pnpm link && npx n8n
 
+
+# Install/Update n8n custom node
 cd n8n-docker-caddy && docker-compose down && cd custom-nodes && git pull && rm dist -r && npm run build && cd .. && docker-compose up -d && cd ..
 
-# Staging
-nvm use 18 && pnpm run build && pnpm link && npx n8n
+# Update self-hosted n8n
+cd n8n-docker-caddy && docker-compose down && docker-compose pull && docker-compose up -d
